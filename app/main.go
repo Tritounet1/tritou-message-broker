@@ -1,22 +1,20 @@
 package main
 
 import (
-	"fmt"
-	"os"
+	"flag"
+	"tidy/src/api"
 )
 
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Println("usage: go run . [client|server]")
-		return
+	mode := flag.String("mode", "server", "server or client")
+	flag.Parse()
+
+	switch *mode {
+	case "server":
+		api.RunServer()
+	case "client":
+		// Le client est surtout là pour tester le server donc à voir si garder sinon dans tout les cas il sera converti en tests unitaire
+		api.RunClient()
 	}
 
-	switch os.Args[1] {
-	case "client":
-		runClient()
-	case "server":
-		runServer()
-	default:
-		fmt.Println("unknown command")
-	}
 }

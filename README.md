@@ -1,7 +1,48 @@
-# Message Broker (GoStream)
+# TritouBroker
 
-A lire :
+## How to run the project
 
-Link de ce que c'est un Message Broker : https://medium.com/@cindanojonathan.fr/message-broker-microservices-7a23ef865435
-Le plus connu : https://kafka.apache.org/
-Explication de kafka : https://medium.com/@aymen.zeidi/comprendre-apache-kafka-un-broker-de-messages-haute-performance-e864b7e2a6ad
+Run the command for protobuf code generation :
+
+```sh
+protoc --go_out=. --go-grpc_out=. src/proto/topic.proto
+```
+
+Result :
+
+/topic/topic.pb.go → Go structs (protobuf messages)
+/topic/topic_grpc.pb.go → gRPC interfaces
+
+### Run the server
+
+```sh
+go run . -mode=server
+```
+
+### Run the client
+
+```sh
+go run . -mode=client
+```
+
+### Run in development
+
+Install air :
+
+```sh
+go install github.com/air-verse/air@latest
+```
+
+or with homebrew :
+
+```sh
+brew install go-air
+```
+
+And now you can run the server with :
+
+```sh
+air
+```
+
+## Understand the code

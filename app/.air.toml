@@ -1,0 +1,8 @@
+[build]
+cmd = "go build -o ./tmp/main ."
+bin = "./tmp/main"
+args_bin = ["-mode", "server"]
+
+[watch]
+include_dir = ["."]
+exclude_dir = ["tmp", "vendor"]
